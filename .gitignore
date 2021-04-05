@@ -1,0 +1,8 @@
+
+# Sphinx documentation
+docs/en/build/
+docs/zh_CN/build/
+
+# Pycharm additions
+.idea/
+__pycache__/
