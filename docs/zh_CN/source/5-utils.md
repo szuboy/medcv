@@ -9,17 +9,12 @@
 医学图像通常有很高的动态范围（比如：CT的动态范围一般为-1024~1024），可以通过映射函数以完成图像的显示。依据[DICOM协议](https://dicom.innolitics.com/ciods/ct-image/voi-lut/00281056)
 中，主要定义了三个映射函数：```LINEAR```、```LINEAR_EXACT```、```SIGMOID```（MedCV内部默认使用```LINEAR```），每个函数都与窗口中心（窗位）和窗口宽度（窗宽）双变量相关，具体请参考[源码](https://baidu.com)
 
-<div class="admonition warning">
-<p class="first admonition-title">警告</p>
-<p class="last">窗宽参数（width）必须设置为大于或等于1</p>
-</div>
-
 
 ### LUT建立
 ```
 medcv.utils.generate_lut_array(image, width, center, y_min=0, y_max=255, dtype=np.uint8, invert=False, mode=medcv.LINEAR_MODE)
 ```
-该函数根据传入的图像数据生成对应的LUT，返回值为：```offset```和```lut_array```
+该函数根据传入的图像数据生成对应的LUT，返回值为：```offset```和```lut_array```，具体请参考[源码](https://baidu.com)
 
 #### 参数
 - **image** (np.ndarray)：医学图像格式，支持二维or三维输入
@@ -31,11 +26,12 @@ medcv.utils.generate_lut_array(image, width, center, y_min=0, y_max=255, dtype=n
 - **invert** (bool)：是否为反色模式，默认为```False```
 - **mode**：映射函数选择，可选```LINEAR```、```LINEAR_EXACT```和```SIGMOID```，默认为```LINEAR```
 
-#### 使用示例
-```
-import numpy as np
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
+
+<div class="admonition warning">
+<p class="first admonition-title">警告</p>
+<p class="last">窗宽参数（width）必须设置为大于或等于1</p>
+</div>
+
 
 ## 参数校验
 ```
