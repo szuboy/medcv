@@ -1,0 +1,5 @@
+numpy>=1.9.2
+opencv-python
+PyQt5
+PyQt5-sip
+six>=1.10.0
