@@ -1,9 +1,9 @@
-===========
-可视化接口
-===========
+==============
+Visualize API
+==============
 
-图像分类
-==========
+Classification
+===============
 
 image_with_heatmap
 ---------------------
@@ -11,24 +11,24 @@ image_with_heatmap
 
     medcv.visualize.cls.image_with_heatmap(image, heatmap, alpha=0.8, beta=0.3, colormap=cv2.COLORMAP_JET, width=None, level=None)
 
-将关注热图在原图上进行可视化，例如：深度学习分类网络的Grad-CAM热图叠加在医学图像上进行可视化。
+Visualize the attention heatmap on the medical image. For example, the Grad-CAM heatmap of the deep learning classification network is superimposed on the medical image for visualization.
 
-本函数内部采用 ``cv2.addWdighted`` 函数实现，是一种图像融合方法，对图像赋予不同的权重，以使其具有融合或透明的效果。根据以下等式进行融合：
+This function is implemented by the ``cv2.addWdighted`` function, which is an image fusion method. The fusion is performed according to the following equation:
 
 .. math::
     dst = \alpha \cdot image + \beta \cdot heatmap + \gamma
 
-参数
-^^^^^^
-- **image** (np.ndarray)：二维样式的医学图像原图
-- **heatmap** (np.ndarray)：``image`` 对应的热图矩阵
-- **alpha** (float)： ``image`` 对应的权重，取值范围为 ``0 ~ 1`` ，默认为 ``0.8``
-- **beta** (float)： ``heatmap`` 对应的权重，取值范围为 ``0 ~ 1`` ，默认为 ``0.3``
-- **colormap**：颜色图类型，默认为 ``cv2.COLORMAP_JET`` ，详情参考 `此文档 <https://docs.opencv.org/master/d3/d50/group__imgproc__colormap.html>`_
-- **width** (int)：显示的窗宽，默认为```None```，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为```None```，则```level=((image)+min(image))/2```
+Parameter
+^^^^^^^^^^
+- **image** (np.ndarray): medical image with 2-dim
+- **heatmap** (np.ndarray): heatmap corresponding to ``image``
+- **alpha** (float): weight corresponding to ``image`` , the value range is ``0 ~ 1`` , default is ``0.8``
+- **beta** (float): weight corresponding to ``heatmap`` , the value range is ``0 ~ 1`` , default is ``0.3``
+- **colormap**: default is ``cv2.COLORMAP_JET`` , refer to `this document <https://docs.opencv.org/master/d3/d50/group__imgproc__colormap.html>`_ for details
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
 
-使用示例
+Usage
 ^^^^^^^^
 
 .. code-block:: python
@@ -65,13 +65,13 @@ image_with_heatmap
     plt.imshow(chest_image_with_heatmap)
     plt.show()
 
-可视化
+Result
 ^^^^^^^
 .. image:: /_static/chest_with_heatmap.png
 
 
 
-目标检测
+Detection
 ==========
 
 image_with_bbox
@@ -80,19 +80,21 @@ image_with_bbox
 
     medcv.visualize.det.imag_with_bbox(image, bbox, bbox_ids=None, colors=None, thickness=1, width=None, level=None)
 
-将目标检测框在原图上进行可视化，通过指定 ``bbox_ids`` 参数支持多个不同对象框的可视化
+Visualize the target detection bounding box on the medical image, and support the visualization of multiple different object frames by specifying the ``bbox_ids`` parameter
 
-参数
-^^^^^^
-- **image** (np.ndarray)：二维样式的医学图像原图
-- **bbox** (list)：检测框列表，形式为 ``[(x, y, w, h), (x, y, w, h), ...]``
-- **bbox_ids** (list)：检测框的id列表，每个检测框对应一个id，以区分不同的对象，默认为 ``None`` ，即每个检测框对应不同的对象
-- **colors** (list)：不同id对应rgb颜色列表，形式为 ``[(r, g, b), (r, g, b), ...]`` ，如果为 ``None`` ，颜色将会随机
-- **thickness** (int)：边框的像素大小，默认为1
-- **width** (int)：显示的窗宽，默认为```None```，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为```None```，则```level=((image)+min(image))/2```
 
-使用示例
+Parameter
+^^^^^^^^^^
+- **image** (np.ndarray): medical image with 2-dim
+- **bbox** (list): bbox list, the form is ``[(x, y, w, h), (x, y, w, h), ...]``
+- **bbox_ids** (list): id list of bbox, each box corresponds to an id to distinguish different category, default is ``None``, which is each box corresponds to a category
+- **colors** (list): color list for different category, the form is ``[(r, g, b), (r, g, b), ...]`` . If is ``None``, the color will be random
+- **thickness** (int)：thickness for boundary, default is ``thickness=1``
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
+
+
+Usage
 ^^^^^^^^
 
 .. code-block:: python
@@ -138,14 +140,14 @@ image_with_bbox
     plt.show()
 
 
-可视化
-^^^^^^^^
+Result
+^^^^^^^
 .. image:: /_static/chest_with_bbox.png
 
 
 
-实例分割
-==========
+Segmentation
+=============
 
 imag_with_mask
 ---------------------
@@ -153,19 +155,19 @@ imag_with_mask
 
     medcv.visualize.seg.imag_with_mask(image, mask, alpha=0.5, colors=None, width=None, level=None)
 
-将标注的Mask在原图上进行可视化，例如：对比分割结果与金标准的重叠程度的可视化。
+Visualize the labeled Mask on the medical image. For example: visualize the degree of overlap between the segmentation result and the ground truth(GT).
+
+Parameter
+^^^^^^^^^^
+- **image** (np.ndarray): medical image with 2-dim
+- **mask** (np.ndarray): mask corresponding to ``image`` , default zero is background, non-zeros is region of interest(ROI)
+- **alpha** (float): weight corresponding to ``mask`` , the value range is ``0 ~ 1`` , default is ``0.5``
+- **colors** (list): color list for different ROI, the form is ``[(r, g, b), (r, g, b), ...]`` . If is ``None``, the color will be random
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
 
 
-参数
-^^^^^^
-- **image** (np.ndarray)：二维样式的医学图像原图
-- **mask** (np.ndarray)：``image`` 对应的mask，默认0为背景，非零值为ROI
-- **alpha** (float)： ``mask`` 对应的加权值，取值范围为 ``0 ~ 1`` ，默认为 ``0.5``
-- **colors** (list)：不同ROI对应rgb颜色列表，按照ROI的标注值进行升序索引，形式为 ``[(r, g, b), (r, g, b), ...]``
-- **width** (int)：显示的窗宽，默认为 ``None``，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为 ``None``，则```level=((image)+min(image))/2```
-
-使用示例
+Usage
 ^^^^^^^^
 
 .. code-block:: python
@@ -210,11 +212,11 @@ imag_with_mask
     plt.show()
 
 
-可视化
-^^^^^^^^
+Result
+^^^^^^^
 .. image:: /_static/chest_with_mask.png
 
-**备注说明**：绿色为金标准与分割结果的重叠部分，红色+绿色=金标准区域，蓝色+绿色=分割结果区域
+**Remarks**: green is the overlap between the GT and the segmentation result, red+green=GT, blue+green=segmentation result.
 
 
 image_with_contours
@@ -223,19 +225,20 @@ image_with_contours
 
     medcv.visualize.seg.image_with_contours(image, mask, colors=None, thickness=1, width=None, level=None)
 
-本函数内部采用 ``cv2.drawContours`` 函数实现，将标注的Mask的边缘轮廓在原图上进行可视化，例如：对比分割结果与金标准的边缘信息的可视化。
+This function is implemented by the ``cv2.drawContours`` function to visualize the edge contour of the mask on the medical image. For example, comparing the segmentation result with the GT edge information.
 
 
-参数
-^^^^^^
-- **image** (np.ndarray)：二维样式的医学图像原图
-- **mask** (np.ndarray)：``image`` 对应的mask，默认0为背景，非零值为ROI
-- **colors** (list)：不同ROI对应rgb颜色列表，按照ROI的标注值进行升序索引，形式为 ``[(r, g, b), (r, g, b), ...]``
-- **thickness** (int)：边缘轮廓线的像素大小
-- **width** (int)：显示的窗宽，默认为```None```，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为```None```，则```level=((image)+min(image))/2```
+Parameter
+^^^^^^^^^^
+- **image** (np.ndarray): medical image with 2-dim
+- **mask** (np.ndarray): mask corresponding to ``image`` , default zero is background, non-zeros is region of interest(ROI)
+- **colors** (list): color list for different ROI, the form is ``[(r, g, b), (r, g, b), ...]`` . If is ``None``, the color will be random
+- **thickness** (int)：thickness for boundary, default is ``thickness=1``
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
 
-使用示例
+
+Usage
 ^^^^^^^^
 
 .. code-block:: python
@@ -283,7 +286,7 @@ image_with_contours
     plt.show()
 
 
-可视化
-^^^^^^^^
+Result
+^^^^^^^
 .. image:: /_static/chest_with_contours.png
 

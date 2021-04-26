@@ -7,19 +7,19 @@
 
 ### 映射函数
 医学图像通常有很高的动态范围（比如：CT的动态范围一般为-1024~1024），可以通过映射函数以完成图像的显示。依据[DICOM协议](https://dicom.innolitics.com/ciods/ct-image/voi-lut/00281056)
-中，主要定义了三个映射函数：```LINEAR```、```LINEAR_EXACT```、```SIGMOID```（MedCV内部默认使用```LINEAR```），每个函数都与窗口中心（窗位）和窗口宽度（窗宽）双变量相关，具体请参考[源码](https://baidu.com)
+中，主要定义了三个映射函数：```LINEAR```、```LINEAR_EXACT```、```SIGMOID```（MedCV内部默认使用```LINEAR```），每个函数都与窗口中心（窗位）和窗口宽度（窗宽）双变量相关，具体请参考[源码](https://github.com/szuboy/medcv/blob/master/medcv/utils/lut_fn.py)
 
 
 ### LUT建立
 ```
 medcv.utils.generate_lut_array(image, width, center, y_min=0, y_max=255, dtype=np.uint8, invert=False, mode=medcv.LINEAR_MODE)
 ```
-该函数根据传入的图像数据生成对应的LUT，返回值为：```offset```和```lut_array```，具体请参考[源码](https://baidu.com)
+该函数根据传入的图像数据生成对应的LUT，返回值为：```offset```和```lut_array```，具体请参考[源码](https://github.com/szuboy/medcv/blob/master/medcv/utils/lut.py)
 
 #### 参数
 - **image** (np.ndarray)：医学图像格式，支持二维or三维输入
-- **width** (int)：图像窗位
-- **center** (int)：图像窗宽
+- **width** (int)：图像窗宽
+- **center** (int)：图像窗位
 - **y_min** (number)：映射函数对应的最小值，默认为```0```
 - **y_max** (number)：映射函数对应的最大值，默认为```255```
 - **dtype**：```lut_array```数据类型，默认为```np.uint8```
@@ -37,5 +37,5 @@ medcv.utils.generate_lut_array(image, width, center, y_min=0, y_max=255, dtype=n
 ```
 medcv.utils.expected_type(*type_args, **type_kwargs)
 ```
-基于Python函数闭包特性和装饰器机制，结合```inspect```库```signature```方法，优雅且简洁地完成函数形参类型的检查与校验，具体请参考[源码](https://baidu.com)
+基于Python函数闭包特性和装饰器机制，结合```inspect```库```signature```方法，优雅且简洁地完成函数形参类型的检查与校验，具体请参考[源码](https://github.com/szuboy/medcv/blob/master/medcv/utils/arg_support.py)
 

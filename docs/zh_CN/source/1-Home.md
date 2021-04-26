@@ -40,7 +40,7 @@ sudo pip install medcv
 pip install medcv
 ```
 
-- **或者：使用Github源码安装MedCV：**
+- **或者：使用Github源码安装MedCV**
 
 首先，使用```git```来克隆MedCV：
 ```
@@ -55,7 +55,7 @@ sudo python setup.py install
 ## 技术支持
 你可以在下列网址提问或加入MedCV开发讨论：
 
-- MedCV Google group
+- MedCV [Google group](https://groups.google.com/g/medcv)
 
-- 你也可以在Github issues里提问或请求新特性（在提问之前请确保你阅读过我们的指导，我本人会经常为大家解答）
+- 你也可以在 [Github issues](https://github.com/szuboy/medcv/issues) 里提问或请求新特性（在提问之前请确保你阅读过我们的指导，我本人会经常为大家解答）
 

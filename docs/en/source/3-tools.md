@@ -1,22 +1,24 @@
-# 工具类函数
+# Tools API
 
-## 图像转换
-图像转换是通过建立相应的LUT，将医学图像原图映射到一个理想的输出格式，可用于医学图像窗宽窗位的调节、医学图像转自然图像格式（映射到0 - 255之间）等场景。
+## Transform
+Image transform is to map the medical image to output format by establishing a corresponding lookup table(LUT), which can be used to adjust the medical image window and convert the medical image to the natural image format (mapping between 0-255) and other scenes.
 
 ### med2med
 ```
 medcv.tools.med2med(med_image, width=None, level=None, dtype=np.float64, invert=False)
 ```
-该函数主要用于进行高效地医学图像窗宽窗位的调节，返回调窗后的医学图像，支持二维或者三维的输入。
+This function is mainly used to efficiently adjust image window, return the medical image after window adjustment, and support two-dimensional or three-dimensional input.
 
-#### 参数
-- **med_image** (np.ndarray)：医学图像，二维or三维都可
-- **width** (int)：显示的窗宽，默认为```None```，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为```None```，则```level=((image)+min(image))/2```
-- **dtype**：输出的数据类型，默认为```np.float64```
-- **invert**：是否进行反色操作，即为倒序映射，默认为```False```
 
-#### 使用实例
+#### Parameter
+- **med_image** (np.ndarray): medical image, support 2-dim or 3-dim
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
+- **dtype**: output's data type, default is ```np.float64```
+- **invert**: whether to reverse mapping, default is ```False```
+
+
+#### Usage
 ```
 import matplotlib.pyplot as plt
 from medcv.data import chest_dcm
@@ -52,7 +54,7 @@ plt.show()
 
 ```
 
-#### 可视化
+#### Result
 ![](/_static/med2med_visualize.png)
 
 
@@ -61,16 +63,15 @@ plt.show()
 ```
 medcv.tools.med2grey(med_image, width=None, level=None, invert=False)
 ```
-该函数功能是将二维的医学图像转为灰度图，支持窗宽窗位设置，返回转换后的灰度图，以此来兼容OpenCV的输入格式。
+The function is to convert a two-dimensional medical image into a grayscale image, which supports window adjust and returns the converted grayscale image to be compatible with the OpenCV input format.
 
-#### 参数
-- **med_image** (np.ndarray)：二维样式的医学图像
-- **width** (int)：显示的窗宽，默认为```None```，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为```None```，则```level=((image)+min(image))/2```
-- **invert**：是否进行反色操作，即为倒序映射，默认为```False```
+#### Parameter
+- **med_image** (np.ndarray): medical image with 2-dim
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
+- **invert**: whether to reverse mapping, default is ```False```
 
-
-#### 使用实例
+#### Usage
 ```
 import matplotlib.pyplot as plt
 from medcv.data import chest_dcm
@@ -106,7 +107,7 @@ plt.show()
 
 ```
 
-#### 可视化
+#### Result
 ![](/_static/med2med_visualize.png)
 
 
@@ -115,16 +116,18 @@ plt.show()
 ```
 medcv.tools.med2rgb(med_image, width=None, level=None, invert=False)
 ```
-该函数功能是将二维的医学图像转为rgb格式的自然图像，支持窗宽窗位设置，返回转换后的RGB图像，以此来兼容OpenCV的输入格式。
 
-#### 参数
-- **med_image** (np.ndarray)：二维样式的医学图像
-- **width** (int)：显示的窗宽，默认为```None```，则```width=max(image)-min(image)```
-- **level** (int)：显示的窗位，默认为```None```，则```level=((image)+min(image))/2```
-- **invert**：是否进行反色操作，即为倒序映射，默认为```False```
+The function is to convert a two-dimensional medical image into a rgb image, which supports window adjust and returns the converted rgb image to be compatible with the OpenCV input format.
 
 
-#### 使用实例
+#### Parameter
+- **med_image** (np.ndarray): medical image with 2-dim
+- **width** (int): window width for image, default is ``None``, which is ``width=max(image)-min(image))``
+- **level** (int): window level for image, default is ``None``, which is ``level=((image)+min(image))/2``
+- **invert**: whether to reverse mapping, default is ```False```
+
+
+#### Usage
 ```
 import matplotlib.pyplot as plt
 from medcv.data import chest_dcm
@@ -159,6 +162,6 @@ plt.imshow(rgb_image3)
 plt.show()
 ```
 
-#### 可视化
+#### Result
 ![](/_static/med2med_visualize.png)
 

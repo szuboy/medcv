@@ -1,21 +1,60 @@
-# Home
+# MedCV: OpenCV for Medical
 
-- Read the Docs link: https://medcv.readthedocs.io/
+## You have just found MedCV 
+MedCV is an advanced medical image visualization library, which is written by [Numpy](https://github.com/numpy/numpy) and [OpenCV](https://github.com/opencv/opencv-python) to complete image visualization. MedCV was born to solve the compatibility between OpenCV and medical images. It would help you to quickly visualize your results. 
 
-## medcv: library for medical opencv
+If you have the following requirements, please choose MedCV:
 
-### You have just found medcv
+- Simple and fast medical visualization design (MedCV is highly modular, minimalist, and expandable)
+- Establish a medical image interactive platform
 
-scikit-radiomics is a ...
 
-### Guiding principles
+## Guiding principles
 
-- Modularity. A model is understood as a sequence or a graph of standalone, 
-fully-configurable modules that can be plugged together with as little restrictions as possible. 
-- Minimalism. Each module should be kept short and simple. 
-Every piece of code should be transparent upon first reading. 
-- Easy extensibility. New modules are dead simple to add (as new classes and functions), 
-and existing modules provide ample examples. 
-To be able to easily create new modules allows for total expressiveness, making radiomics suitable for advanced research.
-- Work with Python. No separate models configuration files in a declarative format. 
-Models are described in Python code, which is compact, easier to debug, and allows for ease of extensibility.
+- **Friendly**. MedCV is an API designed for humans. MedCV follows best practices for reducing cognitive difficulties: MedCV provides a consistent and concise API to quickly complete visualization tasks.
+- **Modularity**. MedCV has three independent modules: visualize, tools, and GUI controls. You can use them to customize your own visualization operations or build an interactive platform. 
+- **Work with Python**. No separate configuration files in a declarative format. Models are described in Python code, which is compact, easier to debug, and allows for ease of extensibility.
+
+
+## Version and update
+
+This document is the English document of MedCV, including all the contents of MedCV, as well as more examples, explanations and suggestions.
+If you have any comments, suggestions or questions during the use process, please send email to moyan_work@foxmail.com to get in touch with me.
+
+Any contribution you made to the document, including document translation, checking for deficiencies, conceptual explanations, finding and modifying problems, contributing sample programs, etc., will be recorded in the acknowledgment. Thank you very much for your contribution to MedCV!
+
+
+## Installation
+Before installing MedCV, please install the following requirements:
+- Numpy (used for image matrix operations)
+- OpenCV (Compatible call completion visualization)
+- PyQt5 (design control for customized medical image version)
+
+Install MedCV in two ways:
+
+- **Use PyPI to install MedCV(recommended)**
+```
+sudo pip install medcv
+```
+If you use virtual environment, you can avoid using sudo:
+```
+pip install medcv
+```
+
+- **Or：use Github source code to install MedCV**
+
+First, use```git```to clone MedCV:
+```
+git clone https://github.com/szuboy/medcv.git
+```
+Then, ```cd```to the MedCV directory and run the installation command:
+```
+cd medcv
+sudo python setup.py install
+```
+
+## Support
+You can ask questions or join the MedCV development discussion at the following URL:
+- MedCV [Google group](https://groups.google.com/g/medcv)
+- You can also ask questions or request new features in [Github issues](https://github.com/szuboy/medcv/issues) (please make sure you read our guide before asking questions, and I will answer it frequently for you)
+
