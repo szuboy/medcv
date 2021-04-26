@@ -6,3 +6,8 @@ docs/zh_CN/build/
 # Pycharm additions
 .idea/
 __pycache__/
+
+# Pypi release
+medcv.egg-info/
+build/
+dist/
